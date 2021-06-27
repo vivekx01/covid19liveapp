@@ -33,4 +33,4 @@ def responseview(request):
     
    
     context={'mylist':mylist}
-    return render (request,"CovidResponse.html",context)
+    return render (request,"covidresponse.html",context)

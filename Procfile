@@ -1,1 +1,1 @@
-web: gunicorn scrapmart.wsgi --log-file -
+web: gunicorn covid.wsgi --log-file -

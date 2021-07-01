@@ -31,6 +31,15 @@ def responseview(request):
         context={'selectedcountry':selectedcountry,'mylist':mylist,'new':new,'active':active,'critical':critical,'recovered':recovered,'deaths':deaths,'total':total}
         return render (request,"CovidResponse.html",context)
     
-   
-    context={'mylist':mylist}
+    selectedcountry="India"
+    noofresults= int(response['results'])
+    for x in range(0,noofresults):
+        if selectedcountry==response['response'][x]['country']:
+            new=response['response'][x]['cases']['new']
+            active=response['response'][x]['cases']['active']
+            critical=response['response'][x]['cases']['critical']
+            recovered=response['response'][x]['cases']['recovered']
+            total=response['response'][x]['cases']['total']
+            deaths= int(total)-int(active)-int(recovered)
+    context={'selectedcountry':selectedcountry,'mylist':mylist,'new':new,'active':active,'critical':critical,'recovered':recovered,'deaths':deaths,'total':total}
     return render (request,"CovidResponse.html",context)

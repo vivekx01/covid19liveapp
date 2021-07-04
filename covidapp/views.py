@@ -28,7 +28,7 @@ def responseview(request):
                 recovered=response['response'][x]['cases']['recovered']
                 total=response['response'][x]['cases']['total']
                 deaths= int(total)-int(active)-int(recovered)
-        context={'selectedcountry':selectedcountry,'mylist':mylist,'new':new,'active':active,'critical':critical,'recovered':recovered,'deaths':deaths,'total':total}
+        context={'selectedcountry':selectedcountry,'mylist':sorted(mylist),'new':new,'active':active,'critical':critical,'recovered':recovered,'deaths':deaths,'total':total}
         return render (request,"covidresponse.html",context)
     
     selectedcountry="India"
@@ -41,5 +41,5 @@ def responseview(request):
             recovered=response['response'][x]['cases']['recovered']
             total=response['response'][x]['cases']['total']
             deaths= int(total)-int(active)-int(recovered)
-    context={'selectedcountry':selectedcountry,'mylist':mylist,'new':new,'active':active,'critical':critical,'recovered':recovered,'deaths':deaths,'total':total}
+    context={'selectedcountry':selectedcountry,'mylist':sorted(mylist),'new':new,'active':active,'critical':critical,'recovered':recovered,'deaths':deaths,'total':total}
     return render (request,"covidresponse.html",context)
